@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentskills.io/idea-to-insight/learning-candidate.schema.json",
+  "title": "Learning Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["rule", "scope", "trigger", "evidence", "exception", "final_article_hash"],
+  "properties": {
+    "rule": {"type": "string", "minLength": 1},
+    "scope": {"enum": ["article", "genre", "global"]},
+    "scope_key": {"type": "string"},
+    "trigger": {"type": "string", "minLength": 1},
+    "evidence": {"type": "array", "maxItems": 10, "items": {"type": "string", "maxLength": 1200}},
+    "exception": {"type": "string"},
+    "final_article_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "status": {"enum": ["pending", "active", "rejected", "duplicate"]}
+  },
+  "allOf": [
+    {"if": {"properties": {"scope": {"const": "genre"}}}, "then": {"required": ["scope_key"], "properties": {"scope_key": {"minLength": 1}}}}
+  ]
+}

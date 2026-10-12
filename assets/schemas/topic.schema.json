@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentskills.io/idea-to-insight/topic.schema.json",
+  "title": "Idea-to-Insight Topic",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["topic_id", "title", "direction", "status", "last_stage", "checkpoint"],
+  "properties": {
+    "topic_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "direction": {"type": "string"},
+    "status": {"enum": ["collecting", "dialogue", "value_gate", "drafting", "compression", "clarity", "awaiting_decision", "suspended", "abandoned", "finalized"]},
+    "last_stage": {"type": "string"},
+    "checkpoint": {"type": "object"},
+    "pause_reason": {"type": "string"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  }
+}

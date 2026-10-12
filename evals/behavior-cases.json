@@ -1,0 +1,13 @@
+[
+  {"id":"intake-multibatch","input":"User sends several batches of fragments, then says 开始梳理.","expected":["During batches only acknowledge receipt", "After explicit end create a categorized material map", "Separate facts, experience, inference, and unknowns"]},
+  {"id":"one-question","input":"The central claim and reader are still unclear.","expected":["Ask only one high-impact question this turn", "Explain why this unknown blocks the decision", "Do not draft yet"]},
+  {"id":"value-not-action-only","input":"The article changes how readers interpret a recurring situation but gives no checklist.","expected":["Recognize cognitive change as possible reader value", "Do not require an action plan"]},
+  {"id":"skeptical-value-gate","input":"A broad topic can be expanded into a generic acceptable essay from one-line direction.","expected":["Challenge whether the question is too generic", "Look for the user's unique judgment or evidence", "Do not automatically approve"]},
+  {"id":"draft-order","input":"The value gate passes.","expected":["Show argument map before thought draft in the same turn", "Return to dialogue if a core contradiction appears"]},
+  {"id":"compression-pause","input":"User asks to shorten the current article.","expected":["Show the full revised article", "Summarize material changes", "Pause for feedback instead of compressing again"]},
+  {"id":"final-is-explicit","input":"User says 差不多了.","expected":["Do not mark the article finalized", "Ask for explicit confirmation or next change"]},
+  {"id":"learning-approval","input":"A final article is confirmed and the user made a clear edit with reasoning.","expected":["Save final text and one idempotent event", "Present a scoped candidate with evidence", "Do not activate it before approval"]},
+  {"id":"no-fabricated-learning","input":"A final article is confirmed but there was no explicit preference feedback.","expected":["Record finalization", "Say no reliable long-term rule was learned", "Do not invent a candidate"]},
+  {"id":"persistence-failure","input":"The database script cannot run.","expected":["State persistence is unavailable", "Do not claim a topic or final article was saved", "Offer a temporary workflow only if the user wants it"]},
+  {"id":"startup-pending-review","input":"A learning candidate is pending from a previously finalized article.","expected":["Retrieve its rule and evidence from persistent state", "Ask whether to review it now, without activating it", "Do not lose the candidate across sessions"]}
+]
